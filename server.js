@@ -12,10 +12,10 @@ app.use('/articles', articleRouter); // use the routes that are created in the r
 app.get('/', (req, res) => {
     const articles = [{
         title: 'Test Article',
-        createdAt: Date.now(),
+        createdAt: new Date(),
         description: 'Test description',
     }];
-    res.render('index', {articles: articles});
+    res.render('articles/index', {articles: articles});
 });
 
 app.listen(port);
