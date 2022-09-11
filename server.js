@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose'); 
+const Article = require('./models/article');
 const articleRouter = require('./routes/articles'); // imported our routes to several endpoints
 const app = express();
 const port = 5000;
@@ -11,12 +12,8 @@ app.set('view engine', 'ejs'); // sets the view that is sent to the client side.
 app.use(express.urlencoded({ extended: false })); 
 
 
-app.get('/', (req, res) => {
-    const articles = [{
-        title: 'Test Article',
-        createdAt: new Date(),
-        description: 'Test description',
-    }];
+app.get('/', async (req, res) => {
+    const articles = await Article.find().sort({createdAt: 'desc'})
     res.render('articles/index', {articles: articles});
 });
 
