@@ -1,8 +1,10 @@
 const express = require('express');
+const mongoose = require('mongoose'); 
 const articleRouter = require('./routes/articles'); // imported our routes to several endpoints
 const app = express();
 const port = 5000;
 
+// mongoose.connect('mongodb://localhost/blog')
 
 app.set('view engine', 'ejs'); // sets the view that is sent to the client side. Contains HTML file
 
