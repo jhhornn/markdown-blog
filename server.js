@@ -4,7 +4,7 @@ const Article = require('./models/article');
 const articleRouter = require('./routes/articles'); // imported our routes to several endpoints
 const methodOverride = require('method-override');
 const app = express();
-const port = 5000;
+const port = 7000;
 
 mongoose.connect('mongodb://127.0.0.1/blog', { useNewUrlParser: true, useUnifiedTopology: true});
 
