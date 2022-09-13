@@ -1,4 +1,3 @@
-const { Router } = require('express');
 const express = require('express');
 const Article = require('./../models/article.js');
 const router = express.Router();
@@ -23,7 +22,7 @@ router.post('/', async (req, res, next) => {
     next()
 }, saveArticleAndRedirect('new'))
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', async (req, res, next) => {
     req.article = await Article.findById(req.params.id)
     next()
 }, saveArticleAndRedirect('edit'))
@@ -38,7 +37,7 @@ function saveArticleAndRedirect(path) {
         let article = req.article
 
         article.title = req.body.title
-        article.description = req.body.title
+        article.description = req.body.description
         article.markdown = req.body.markdown
    
     try{
